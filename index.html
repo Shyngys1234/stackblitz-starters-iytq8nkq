@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Тихий холм — ночь 31 октября</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Rubik+Wet+Paint&family=Ruslan+Display&family=Spectral:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#051923; --mid:#003554; --line:#006494; --dodger:#0582CA; --flame:#00A6FB; --bone:#DFF3FF; --veil:5,25,35;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#051923;--mid:#003554;--line:#006494;--dodger:#0582CA;--flame:#00A6FB;--bone:#DFF3FF;--veil:5,25,35}}
+:root[data-theme="dark"]{--bg:#051923;--mid:#003554;--line:#006494;--dodger:#0582CA;--flame:#00A6FB;--bone:#DFF3FF;--veil:5,25,35}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--bone);font-family:Spectral,Georgia,"Times New Roman",serif;font-weight:300;font-size:19px;line-height:1.55;overflow-x:hidden}
+main{position:relative;max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--flame);outline-offset:3px}
+
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 0 70px}
+.when{font-style:italic;font-size:20px;margin:0 0 14px}
+h1{font-family:Nosifer,"Rubik Wet Paint",Georgia,serif;font-weight:400;margin:0;font-size:clamp(44px,12.5vw,170px);line-height:1.1;letter-spacing:0;overflow-wrap:anywhere}
+.lede{max-width:30ch;font-size:clamp(21px,2.6vw,30px);line-height:1.3;margin:28px 0 0}
+.count{margin-top:22px;font-size:17px;color:var(--flame);font-weight:500}
+
+h2{font-family:Nosifer,"Rubik Wet Paint",Georgia,serif;font-weight:400;font-size:clamp(28px,5vw,60px);line-height:1.15;margin:0 0 44px}
+.night{padding:70px 0}
+.step{display:grid;grid-template-columns:110px 1fr;gap:0 28px;position:relative;padding-bottom:38px}
+.step::before{content:"";position:absolute;left:123px;top:14px;bottom:-14px;width:1.5px;background:var(--line)}
+.step:last-child::before{display:none}
+.step::after{content:"";position:absolute;left:118px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--flame)}
+.step time{font-family:"Ruslan Display",Georgia,serif;font-size:34px;line-height:1.1;text-align:right;padding-right:8px;width:104px}
+.step div{padding-left:30px}
+.step h3{margin:0 0 4px;font-size:26px;font-weight:500;line-height:1.2}
+.step p{margin:0;max-width:44ch}
+
+.seat{padding:50px 0 120px}
+.seat p{max-width:40ch;margin:0 0 24px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+input{font:inherit;color:var(--bone);background:transparent;border:0;border-bottom:2px solid var(--bone);padding:10px 2px;min-width:240px;flex:1;max-width:360px}
+input::placeholder{color:#7CB6D8}
+button.go{font:inherit;font-weight:500;color:var(--bg);background:var(--flame);border:0;border-radius:999px;padding:12px 28px;cursor:pointer}
+#msg{margin-top:18px;min-height:1.6em;color:var(--flame)}
+
+#veil{position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:
+   radial-gradient(circle calc(var(--r) * .9) at var(--x) var(--y), rgba(5,130,202,.3), transparent 75%),
+   radial-gradient(circle var(--r) at var(--x) var(--y), transparent 0, transparent 32%, rgba(var(--veil),.95) 100%)}
+html.lit #veil,html.lit .eyes,html.lit .hint{display:none}
+.eyes{position:absolute;z-index:6;width:38px;height:12px;pointer-events:none;transition:opacity .3s;
+  background:radial-gradient(ellipse 5px 4px at 20% 50%,var(--flame) 70%,transparent 75%),radial-gradient(ellipse 5px 4px at 80% 50%,var(--flame) 70%,transparent 75%);
+  filter:drop-shadow(0 0 6px var(--flame));animation:blink 6s infinite}
+.eyes.gone{opacity:0}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.hint{position:relative;z-index:6;margin:0 0 auto;padding-bottom:40px;font-style:italic;color:var(--flame);font-size:17px;max-width:26ch;pointer-events:none}
+#lamp{position:fixed;z-index:10;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));font:inherit;font-size:16px;color:var(--bone);background:var(--mid);border:1.5px solid var(--dodger);border-radius:999px;padding:9px 18px;cursor:pointer}
+
+@media (max-width:600px){
+  .step{grid-template-columns:78px 1fr}
+  .step::before{left:91px}.step::after{left:86px}
+  .step time{font-size:26px;width:72px}
+  .step div{padding-left:24px}
+}
+@media (prefers-reduced-motion:reduce){.eyes{animation:none}.clown{transition:none!important}body.shake main{animation:none!important}}
+.clown{position:fixed;z-index:6;bottom:0;left:clamp(10px,10vw,140px);width:clamp(150px,22vw,260px);pointer-events:none;transform:translateY(105%);transition:transform 2s cubic-bezier(.2,.7,.2,1)}
+.clown svg{display:block;width:100%;height:auto}
+.clown.peek{transform:translateY(44%)}
+.clown.lunge{transform:translateY(-4%);transition-duration:.12s}
+.clown.duck{transition-duration:.25s}
+html.lit .clown{display:none}
+#scare{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;overflow:hidden;background:#2a0000;pointer-events:none}
+#scare.on{display:flex;animation:sc-bg 1.5s forwards}
+#scare svg{height:118vh;width:auto;max-width:none;flex:none;animation:sc-zoom 1.5s cubic-bezier(.1,.8,.2,1) forwards}
+@keyframes sc-zoom{0%{transform:scale(.5)}12%{transform:scale(1.25) rotate(-2deg)}30%{transform:scale(1.15) rotate(2deg)}50%{transform:scale(1.3) rotate(-1.5deg)}100%{transform:scale(1.4)}}
+@keyframes sc-bg{0%,85%{opacity:1}100%{opacity:0}}
+#snd{position:fixed;z-index:10;right:16px;bottom:calc(66px + env(safe-area-inset-bottom,0px));font:inherit;font-size:16px;color:var(--bone);background:var(--mid);border:1.5px solid var(--dodger);border-radius:999px;padding:9px 18px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){#scare svg{animation:none;transform:scale(1)}#scare.on{animation:sc-bg 1.5s forwards}}
+body.shake main{animation:shake .25s 2}
+@keyframes shake{25%{transform:translate(-3px,2px)}50%{transform:translate(3px,-2px)}75%{transform:translate(-2px,-1px)}}
+</style>
+</head>
+<body>
+<div id="veil" aria-hidden="true"></div>
+<main>
+  <section class="hero">
+    <p class="hint" id="hint">Страшный клоун наблюдает за вами...</p>
+    <p class="when">Хоррор квест,на холму, 31 октября, 3:00</p>
+    <h1>Тайнственный холм</h1>
+    <p class="lede">Одна ночь, двенадцать комнат. Гостей встречают свечами.</p>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="night">
+    <h2>Ход ночи</h2>
+    <div class="step"><time>21:00</time><div><h3>Вход через сад</h3><p>Фонарь выдают у калитки. Свой лучше оставить дома.</p></div></div>
+    <div class="step"><time>22:30</time><div><h3>Описание и правила</h3><p>Огромный особняк, просим соблюдать правила квеста</p></div></div>
+    <div class="step"><time>03:00</time><div><h3>3 часа</h3><p>Ровно 3 часа у игроков, чтобы выбраться из особняка. Что будет происходить? Неизвестно.</p></div></div>
+    <div class="step"><time>06:00</time><div><h3>Выберитесь</h3><p>Тем кто удался выбраться, будут гласить легенды о особняке. А те кто не сбежали, те...</p></div></div>
+  </section>
+
+  <section class="seat">
+    <h2>Успейте участвовать абсолютно бесплатно</h2>
+    <p>Свободных мест: <b id="left">9</b> из 24. Назовите имя, и мы запишым вас.</p>
+    <div class="row">
+      <input id="who" type="text" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="given-name">
+      <button class="go" id="book">Отправить</button>
+    </div>
+    <div id="msg" role="status"></div>
+  </section>
+</main>
+<div class="clown" id="clown" aria-hidden="true">
+<svg viewBox="0 0 240 260">
+ <g fill="#0a1d28"><ellipse cx="46" cy="84" rx="36" ry="46"/><ellipse cx="194" cy="84" rx="36" ry="46"/><ellipse cx="120" cy="136" rx="74" ry="96"/></g>
+ <g id="cface" style="opacity:0">
+  <ellipse cx="46" cy="84" rx="36" ry="46" fill="#C2171F"/><ellipse cx="194" cy="84" rx="36" ry="46" fill="#C2171F"/>
+  <ellipse cx="120" cy="136" rx="74" ry="96" fill="#EFEBE0"/>
+  <path d="M88 134Q78 175 92 202M152 134Q162 175 148 202" stroke="#C2171F" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M64 94L108 110M176 94L132 110" stroke="#5a0c10" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="120" cy="160" r="15" fill="#D3202A"/>
+  <path d="M58 188Q120 262 182 188Q120 214 58 188Z" fill="#7d0a12"/>
+  <path d="M84 203L90 216L98 206L108 220L120 208L132 220L142 206L150 216L156 203" fill="none" stroke="#EFEBE0" stroke-width="5" stroke-linejoin="round"/>
+ </g>
+ <g style="filter:drop-shadow(0 0 7px #FFC83D)">
+  <ellipse cx="86" cy="122" rx="19" ry="13" fill="#FFC83D"/><ellipse cx="154" cy="122" rx="19" ry="13" fill="#FFC83D"/>
+  <g id="cpup"><ellipse cx="86" cy="122" rx="4.5" ry="11" fill="#1a0b00"/><ellipse cx="154" cy="122" rx="4.5" ry="11" fill="#1a0b00"/></g>
+ </g>
+</svg>
+</div>
+<div id="scare" aria-hidden="true"></div>
+<button id="snd" aria-pressed="true">Звук: вкл</button>
+<button id="lamp" aria-pressed="false">Включить свет</button>
+<script>
+(function(){
+  var root=document.documentElement,main=document.querySelector('main'),hint=document.getElementById('hint');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* eyes in the dark */
+  var spots=[[8,22],[88,38],[14,58],[76,72],[30,86],[92,92],[52,47]],eyes=[];
+  spots.forEach(function(p){
+    var e=document.createElement('span');e.className='eyes';e.setAttribute('aria-hidden','true');
+    e.style.left=p[0]+'%';e.style.top=p[1]+'%';e.style.animationDelay=(Math.random()*5).toFixed(1)+'s';
+    document.body.appendChild(e);eyes.push(e);
+  });
+  function place(){var h=document.body.scrollHeight;eyes.forEach(function(e,i){e.style.top=(spots[i][1]/100*h)+'px'})}
+  addEventListener('load',place);addEventListener('resize',place);place();
+
+  /* lantern */
+  var tx=innerWidth/2,ty=innerHeight*.45,x=tx,y=ty,used=false,t0=performance.now();
+  function R(){return Math.max(150,Math.min(260,innerWidth*.28))}
+  function move(a,b){used=true;tx=a;ty=b}
+  addEventListener('pointermove',function(e){move(e.clientX,e.clientY)});
+  addEventListener('touchmove',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY)},{passive:true});
+  addEventListener('touchstart',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY)},{passive:true});
+  function frame(now){
+    if(!used&&!reduce){var k=(now-t0)/1000;tx=innerWidth*(.5+.28*Math.sin(k*.7));ty=innerHeight*(.45+.22*Math.sin(k*.9+1))}
+    var f=reduce?1:.18;x+=(tx-x)*f;y+=(ty-y)*f;
+    var r=R();root.style.setProperty('--x',x+'px');root.style.setProperty('--y',y+'px');root.style.setProperty('--r',r+'px');clownUpdate(x,y,r);
+    if(!root.classList.contains('lit')){
+      eyes.forEach(function(e){var b=e.getBoundingClientRect(),d=Math.hypot(x-(b.left+b.width/2),y-(b.top+b.height/2));e.classList.toggle('gone',d<r*.8)});
+      if(used&&hint)hint.style.opacity=Math.max(0,1-(scrollY/200))*(1)
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* clown */
+  var cl=document.getElementById('clown'),cface=document.getElementById('cface'),cpup=document.getElementById('cpup'),peeking=false,cool=0;
+  function peekCycle(){
+    setTimeout(function(){
+      if(root.classList.contains('lit')){peekCycle();return}
+      peeking=true;cl.className='clown peek';
+      setTimeout(function(){if(peeking){peeking=false;cl.className='clown'}peekCycle()},4000+Math.random()*3000);
+    },6000+Math.random()*7000);
+  }
+  peekCycle();
+  function clownUpdate(px,py,r){
+    var b=cl.getBoundingClientRect();if(b.top>=innerHeight)return;
+    var cx=b.left+b.width/2,ey=b.top+b.height*.47,dx=px-cx,dy=py-ey,len=Math.hypot(dx,dy)||1;
+    cpup.setAttribute('transform','translate('+(dx/len*6).toFixed(1)+','+(dy/len*4).toFixed(1)+')');
+    var d=Math.hypot(px-cx,py-(b.top+b.height*.5)),p=Math.max(0,Math.min(1,1.2-d/(r*1.1)));
+    if(cl.classList.contains('lunge'))p=1;
+    cface.style.opacity=p;
+    if(peeking&&p>.75&&performance.now()>cool){
+      cool=performance.now()+15000;peeking=false;cl.className='clown duck';scare();
+    }
+  }
+
+  /* screamer */
+  var scareEl=document.getElementById('scare'),snd=document.getElementById('snd'),ac=null,muted=false;
+  function unlock(){if(!ac){try{ac=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(ac&&ac.state==='suspended')ac.resume()}
+  ['pointerdown','touchstart','keydown'].forEach(function(t){addEventListener(t,unlock,{passive:true})});
+  snd.addEventListener('click',function(){muted=!muted;snd.textContent=muted?'Звук: выкл':'Звук: вкл';snd.setAttribute('aria-pressed',!muted)});
+  function scare(){
+    scareEl.innerHTML=cl.querySelector('svg').outerHTML.replace(/ id="[^"]*"/g,'').replace('opacity:0','opacity:1');
+    scareEl.classList.remove('on');void scareEl.offsetWidth;scareEl.classList.add('on');
+    setTimeout(function(){scareEl.classList.remove('on')},1500);
+    scream();
+  }
+  function scream(){
+    if(!ac||muted||ac.state!=='running')return;
+    var t=ac.currentTime,out=ac.createGain(),sh=ac.createWaveShaper(),f=ac.createBiquadFilter(),c=new Float32Array(256),i;
+    for(i=0;i<256;i++)c[i]=Math.tanh((i/128-1)*5);
+    sh.curve=c;f.type='bandpass';f.frequency.value=1700;f.Q.value=.7;
+    out.gain.setValueAtTime(.0001,t);out.gain.exponentialRampToValueAtTime(.5,t+.03);out.gain.setValueAtTime(.5,t+.9);out.gain.exponentialRampToValueAtTime(.0001,t+1.5);
+    sh.connect(f);f.connect(out);out.connect(ac.destination);
+    [1,1.5,2.02].forEach(function(m){
+      var o=ac.createOscillator(),l=ac.createOscillator(),lg=ac.createGain();
+      o.type='sawtooth';o.frequency.setValueAtTime(450*m,t);o.frequency.exponentialRampToValueAtTime(1000*m,t+.2);o.frequency.linearRampToValueAtTime(820*m,t+1.4);
+      l.frequency.value=17;lg.gain.value=60*m;l.connect(lg);lg.connect(o.frequency);
+      o.connect(sh);o.start(t);l.start(t);o.stop(t+1.5);l.stop(t+1.5);
+    });
+    var nb=ac.createBuffer(1,ac.sampleRate*1.5,ac.sampleRate),d=nb.getChannelData(0),ns=ac.createBufferSource(),ng=ac.createGain();
+    for(i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+    ns.buffer=nb;ng.gain.value=.5;ns.connect(ng);ng.connect(sh);ns.start(t);
+  }
+
+  /* lights toggle */
+  var lamp=document.getElementById('lamp');
+  lamp.addEventListener('click',function(){
+    var on=root.classList.toggle('lit');
+    lamp.textContent=on?'Выключить свет':'Включить свет';lamp.setAttribute('aria-pressed',on);
+  });
+
+  /* countdown */
+  var target=new Date(2026,9,31,21,0,0),c=document.getElementById('count');
+  function tick(){
+    var ms=target-new Date();
+    if(ms<=0){c.textContent='Калитка открыта. Дом ждёт.';return}
+    var m=Math.floor(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60);
+    c.textContent='До открытия калитки: '+d+' дн. '+h+' ч. '+(m%60)+' мин.';
+  }
+  tick();setInterval(tick,30000);
+
+  /* booking */
+  var left=9,msg=document.getElementById('msg'),who=document.getElementById('who'),out=document.getElementById('left');
+  function book(){
+    var n=who.value.trim();
+    if(!n){msg.textContent='Укажите имя, чтобы мы поставили прибор.';who.focus();return}
+    if(left<=0){msg.textContent='Мест не осталось. Приходите в следующем году.';return}
+    left--;out.textContent=left;
+    msg.textContent='Место записано на имя «'+n+'». Калитка открыта с 21:00.';who.value='';
+  }
+  document.getElementById('book').addEventListener('click',book);
+  who.addEventListener('keydown',function(e){if(e.key==='Enter')book()});
+})();
+</script>
+</body>
+</html>
